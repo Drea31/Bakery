@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bef1632e01c644679d9c97f187c1b413" Name="Diagram1" ZoomLevel="70">
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Client" Width="1.5" PointX="8.25" PointY="4.875" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Gender" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Login" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Product" Width="1.5" PointX="10.5" PointY="0.75" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.ProductType" Width="1.5" PointX="8.25" PointY="1.625" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Purshare" Width="1.5" PointX="10.5" PointY="5" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.PurshareProduct" Width="1.5" PointX="12.75" PointY="5.25" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Role" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.Staff" Width="1.5" PointX="5.25" PointY="4.625" />
+        <EntityTypeShape EntityType="BakeryGribovPolypanModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.375" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Client_Login" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Client_Role" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Purshare_Client" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Staff_Gender" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Login_Role" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Staff_Login" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Product_ProductType" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_PurshareProduct_Product" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Purshare_Staff" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_PurshareProduct_Purshare" />
+        <AssociationConnector Association="BakeryGribovPolypanModel.FK_Staff_Role1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

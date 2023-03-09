@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BakeryGribovPolypanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BakeryGribovPolypanEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Client" EntityType="BakeryGribovPolypanModel.Client" />
+    <EntitySet Name="Gender" EntityType="BakeryGribovPolypanModel.Gender" />
+    <EntitySet Name="Login" EntityType="BakeryGribovPolypanModel.Login" />
+    <EntitySet Name="Product" EntityType="BakeryGribovPolypanModel.Product" />
+    <EntitySet Name="ProductType" EntityType="BakeryGribovPolypanModel.ProductType" />
+    <EntitySet Name="Purshare" EntityType="BakeryGribovPolypanModel.Purshare" />
+    <EntitySet Name="PurshareProduct" EntityType="BakeryGribovPolypanModel.PurshareProduct" />
+    <EntitySet Name="Role" EntityType="BakeryGribovPolypanModel.Role" />
+    <EntitySet Name="Staff" EntityType="BakeryGribovPolypanModel.Staff" />
+    <EntitySet Name="sysdiagrams" EntityType="BakeryGribovPolypanModel.sysdiagrams" />
+    <AssociationSet Name="FK_Client_Login" Association="BakeryGribovPolypanModel.FK_Client_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Role" Association="BakeryGribovPolypanModel.FK_Client_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purshare_Client" Association="BakeryGribovPolypanModel.FK_Purshare_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Purshare" EntitySet="Purshare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Gender" Association="BakeryGribovPolypanModel.FK_Staff_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_Role" Association="BakeryGribovPolypanModel.FK_Login_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Login" Association="BakeryGribovPolypanModel.FK_Staff_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductType" Association="BakeryGribovPolypanModel.FK_Product_ProductType">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurshareProduct_Product" Association="BakeryGribovPolypanModel.FK_PurshareProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PurshareProduct" EntitySet="PurshareProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purshare_Staff" Association="BakeryGribovPolypanModel.FK_Purshare_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Purshare" EntitySet="Purshare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurshareProduct_Purshare" Association="BakeryGribovPolypanModel.FK_PurshareProduct_Purshare">
+      <End Role="Purshare" EntitySet="Purshare" />
+      <End Role="PurshareProduct" EntitySet="PurshareProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Role1" Association="BakeryGribovPolypanModel.FK_Staff_Role1">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Discount" Type="Int32" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="LoginId" Type="Int32" />
+    <NavigationProperty Name="Login" Relationship="BakeryGribovPolypanModel.FK_Client_Login" FromRole="Client" ToRole="Login" />
+    <NavigationProperty Name="Role1" Relationship="BakeryGribovPolypanModel.FK_Client_Role" FromRole="Client" ToRole="Role" />
+    <NavigationProperty Name="Purshare" Relationship="BakeryGribovPolypanModel.FK_Purshare_Client" FromRole="Client" ToRole="Purshare" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gender1" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Staff" Relationship="BakeryGribovPolypanModel.FK_Staff_Gender" FromRole="Gender" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="BakeryGribovPolypanModel.FK_Client_Login" FromRole="Login" ToRole="Client" />
+    <NavigationProperty Name="Role" Relationship="BakeryGribovPolypanModel.FK_Login_Role" FromRole="Login" ToRole="Role" />
+    <NavigationProperty Name="Staff" Relationship="BakeryGribovPolypanModel.FK_Staff_Login" FromRole="Login" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="ImagePath" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductTypeid" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="ProductType" Relationship="BakeryGribovPolypanModel.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
+    <NavigationProperty Name="PurshareProduct" Relationship="BakeryGribovPolypanModel.FK_PurshareProduct_Product" FromRole="Product" ToRole="PurshareProduct" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="BakeryGribovPolypanModel.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Purshare">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientId" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StaffId" Type="Int32" Nullable="false" />
+    <Property Name="TotalCost" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Client" Relationship="BakeryGribovPolypanModel.FK_Purshare_Client" FromRole="Purshare" ToRole="Client" />
+    <NavigationProperty Name="Staff" Relationship="BakeryGribovPolypanModel.FK_Purshare_Staff" FromRole="Purshare" ToRole="Staff" />
+    <NavigationProperty Name="PurshareProduct" Relationship="BakeryGribovPolypanModel.FK_PurshareProduct_Purshare" FromRole="Purshare" ToRole="PurshareProduct" />
+  </EntityType>
+  <EntityType Name="PurshareProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="PurshareId" />
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PurshareId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="BakeryGribovPolypanModel.FK_PurshareProduct_Product" FromRole="PurshareProduct" ToRole="Product" />
+    <NavigationProperty Name="Purshare" Relationship="BakeryGribovPolypanModel.FK_PurshareProduct_Purshare" FromRole="PurshareProduct" ToRole="Purshare" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="BakeryGribovPolypanModel.FK_Client_Role" FromRole="Role" ToRole="Client" />
+    <NavigationProperty Name="Login" Relationship="BakeryGribovPolypanModel.FK_Login_Role" FromRole="Role" ToRole="Login" />
+    <NavigationProperty Name="Staff" Relationship="BakeryGribovPolypanModel.FK_Staff_Role1" FromRole="Role" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="RoleId" Type="Int32" />
+    <Property Name="GenderCode" Type="Int32" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="LoginId" Type="Int32" />
+    <NavigationProperty Name="Gender" Relationship="BakeryGribovPolypanModel.FK_Staff_Gender" FromRole="Staff" ToRole="Gender" />
+    <NavigationProperty Name="Login" Relationship="BakeryGribovPolypanModel.FK_Staff_Login" FromRole="Staff" ToRole="Login" />
+    <NavigationProperty Name="Purshare" Relationship="BakeryGribovPolypanModel.FK_Purshare_Staff" FromRole="Staff" ToRole="Purshare" />
+    <NavigationProperty Name="Role" Relationship="BakeryGribovPolypanModel.FK_Staff_Role1" FromRole="Staff" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Client_Login">
+    <End Type="BakeryGribovPolypanModel.Login" Role="Login" Multiplicity="0..1" />
+    <End Type="BakeryGribovPolypanModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Role">
+    <End Type="BakeryGribovPolypanModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="BakeryGribovPolypanModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purshare_Client">
+    <End Type="BakeryGribovPolypanModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="BakeryGribovPolypanModel.Purshare" Role="Purshare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Purshare">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Gender">
+    <End Type="BakeryGribovPolypanModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="BakeryGribovPolypanModel.Staff" Role="Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="GenderCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_Role">
+    <End Type="BakeryGribovPolypanModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="BakeryGribovPolypanModel.Login" Role="Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Login">
+    <End Type="BakeryGribovPolypanModel.Login" Role="Login" Multiplicity="0..1" />
+    <End Type="BakeryGribovPolypanModel.Staff" Role="Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductType">
+    <End Type="BakeryGribovPolypanModel.ProductType" Role="ProductType" Multiplicity="0..1" />
+    <End Type="BakeryGribovPolypanModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductTypeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurshareProduct_Product">
+    <End Type="BakeryGribovPolypanModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="BakeryGribovPolypanModel.PurshareProduct" Role="PurshareProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurshareProduct">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purshare_Staff">
+    <End Type="BakeryGribovPolypanModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="BakeryGribovPolypanModel.Purshare" Role="Purshare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Purshare">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurshareProduct_Purshare">
+    <End Type="BakeryGribovPolypanModel.Purshare" Role="Purshare" Multiplicity="1" />
+    <End Type="BakeryGribovPolypanModel.PurshareProduct" Role="PurshareProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purshare">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurshareProduct">
+        <PropertyRef Name="PurshareId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Role1">
+    <End Type="BakeryGribovPolypanModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="BakeryGribovPolypanModel.Staff" Role="Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
