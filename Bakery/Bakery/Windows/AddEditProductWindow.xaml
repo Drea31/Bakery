@@ -83,7 +83,7 @@
             <ComboBox x:Name="CMBTypeProduct"
                      Height="50"
                      FontSize="20"                     
-                     Foreground="Black" Background="Orange" BorderBrush="Red"/>
+                     Foreground="Black" Background="Orange" BorderBrush="Red"  />
             <WrapPanel>
                 <TextBlock Height="50"
                        Text="В продаже"

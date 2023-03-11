@@ -128,5 +128,7 @@ namespace Bakery.Windows
                 pathPhoto = openFileDialog.FileName;
             }
         }
+
+
     }
 }

@@ -35,8 +35,18 @@
                       />
             <TextBlock Text="Все товары:"
                        FontSize="18"
-                       Margin="20 0 0 0"/>
+                       Margin="20 0 0 0"
+                       />
             <CheckBox x:Name="allcheck" VerticalAlignment="Center" Checked="allcheck_Checked_2" Unchecked="Allcheck_UnChecked" ></CheckBox>
+            <TextBlock Text="Фильтр:"
+                       FontSize="18"
+                       Margin="20 0 10 0"/>
+            <ComboBox x:Name="CmbFilter"
+                      FontSize="18"
+                      Width="200" SelectionChanged="CmbFilter_SelectionChanged"
+                      />
+
+
         </WrapPanel>
         <TextBlock Text="Список товаров" 
                        FontSize="25" 
@@ -101,14 +111,31 @@
                                        FontSize="14"
                                        />
                             </WrapPanel>
-                            
 
-                            <Button x:Name="BtnEditProduct" 
-                                    Content="Редактировать"
+
+                            <WrapPanel HorizontalAlignment="Center">
+                                <Button x:Name="BtnEditProduct"    
+                                        
                                     Height="30"
-                                    Width="100"
-                                    Margin="10"
-                                    Click="BtnEditProduct_Click" Foreground="Black" Background="Orange" BorderBrush="Red"/>
+                                    Width="30"
+                                    Margin="0 10 30 0"
+                                    Background="{x:Null}"
+                                    BorderThickness="0"
+                                    Click="BtnEditProduct_Click">
+                                    <Image Source="/res/edit.png" x:Name="editimage"></Image>
+                                </Button>
+
+                                <Button x:Name="BtnAddToCartProduct"                                     
+                                    Height="30"
+                                    Width="30"
+                                    Margin="30 10 0 0"
+                                    Background="{x:Null}"
+                                    BorderThickness="0"
+                                        Click="BtnAddToCartProduct_Click">
+                                    <Image Source="/res/cart.png" x:Name="cartimage"></Image>
+
+                                </Button>
+                            </WrapPanel>
                         </StackPanel>
                     </Border>
 
@@ -116,7 +143,13 @@
             </ListView.ItemTemplate>
 
         </ListView>
-
+        <Image x:Name="ImgCart"
+               Grid.Row="1"
+               HorizontalAlignment="Right"
+               Width="30"
+               Height="30" 
+               Source="/Res/cart.png"
+               Margin="30 0" MouseLeftButtonUp="ImgCart_MouseLeftButtonUp"/>
 
         <Button x:Name="BtnAddProduct" 
                 Content="Добавить"

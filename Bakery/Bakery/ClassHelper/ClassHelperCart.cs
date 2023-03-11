@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bakery.DB;
+using static Bakery.ClassHelper.EFClass;
+using Bakery.Windows;
+
+
 
 namespace Bakery.ClassHelper
 {
-    public class EFClass
+    internal class CartProductClass
     {
-       public static DB.BakeryGribovPolypanEntities Context { get; } = new DB.BakeryGribovPolypanEntities();
+        public static List<Product> products = new List<Product>();
     }
-}
-
-/////Подключение бд
+}//

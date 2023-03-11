@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\Desktop\GribovBakery\Bakery\Bakery\obj\Debug\
+C:\Users\User\Desktop\Bakery\Bakery\obj\Debug\
 Bakery
 none
 false
 DEBUG;TRACE
-C:\Users\User\Desktop\GribovBakery\Bakery\Bakery\App.xaml
-41025617837
+C:\Users\User\Desktop\Bakery\Bakery\App.xaml
+5-97655922
 2-973498431
-22-452798215
-18-616038753
-Windows\AddEditProductWindow.xaml;Windows\AuthWindow.xaml;Windows\ProductListWindow.xaml;Windows\RegistrationUserWindow.xaml;
+25-148790010
+18-184728627
+Windows\AddEditProductWindow.xaml;Windows\AuthWindow.xaml;Windows\CartWindow.xaml;Windows\ProductListWindow.xaml;Windows\RegistrationUserWindow.xaml;
 
-False
+True
 

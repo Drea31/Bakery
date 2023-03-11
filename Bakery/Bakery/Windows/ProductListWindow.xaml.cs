@@ -11,11 +11,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Bakery.ClassHelper;
 using static Bakery.ClassHelper.EFClass;
 using Bakery.Windows;
 using Bakery.DB;
 using System.Xml;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Bakery.Windows
 {
@@ -32,22 +33,32 @@ namespace Bakery.Windows
             "По типу (по возрастанию)",
             "По типу (по убыванию)",
             "По цене (по возрастанию)",
-            "По цене (по убыванию)"
-
+            "По цене (по убыванию)",
+             
+        };
+        List<string> listFilter = new List<string>()
+        {
+            "По умолчанию",
+            "Напитки",
+            "Выпечка",
+            "Торты"
         };
 
+
         public ProductListWindow()
-        {
+        {   
             InitializeComponent();
             CmbSort.ItemsSource = listSort;
             CmbSort.SelectedIndex = 0;
+            CmbFilter.ItemsSource = listFilter;
+            CmbFilter.SelectedIndex = 0;
             GetListProduct();
         }
         private void GetListProduct()
         {
             List<Product> products = new List<Product>();
             products = Context.Product.ToList();
-
+           
             // поиск, сортировка, фильтрация
 
             bool a = (bool)allcheck.IsChecked ;
@@ -57,6 +68,8 @@ namespace Bakery.Windows
                 products = products.Where(i => i.Active.ToString().ToLower().Contains(x.ToLower())).ToList();
                 
             }
+            
+
             
             // поиск
             products = products.Where(i => i.Title.ToLower().Contains(TbSearch.Text.ToLower())).ToList();
@@ -93,14 +106,30 @@ namespace Bakery.Windows
                     break;
                
             }
-
             // фильтрация
+            var selectedIndexCmb2 = CmbFilter.SelectedIndex;
+            switch (selectedIndexCmb2)
+            {
+                case 1:
+                    products = products.Where(i => i.ProductType.TypeName.ToLower().Contains("Напитки".ToLower())).ToList();
+                    break;
+                case 2:
+                    products = products.Where(i => i.ProductType.TypeName.ToLower().Contains("Выпечка".ToLower())).ToList();
+                    break;
+                case 3:
+                    products = products.Where(i => i.ProductType.TypeName.ToLower().Contains("Торты".ToLower())).ToList();
+                    break;
+                default:
+                    break;
+
+            }
+           
 
 
             // вывод итгового списка
             LvProduct.ItemsSource = products;
         }
-
+        
         private void Allcheck_Checked(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
@@ -146,6 +175,31 @@ namespace Bakery.Windows
         private void allcheck_Checked_2(object sender, RoutedEventArgs e)
         {
             GetListProduct();
+        }
+        public int m = 0;
+        private void CmbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {     
+            GetListProduct();
+            
+        }
+        //корзина
+        private void BtnAddToCartProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+            var product = button.DataContext as Product;
+            CartProductClass.products.Add(product);
+        }
+
+        private void ImgCart_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            CartWindow cartProductWindow = new CartWindow();
+            this.Hide();
+            cartProductWindow.ShowDialog();
+            this.Show();
         }
     }
 }
